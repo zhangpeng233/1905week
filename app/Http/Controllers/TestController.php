@@ -8,6 +8,7 @@ class TestController extends Controller
 {
    public function alipay()
    {
+       $ali_gateway = 'https://openapi.alipaydev.com/gateway.do';  //支付网关
    	$appid='2016101000651408';
    	$method='alipay.trade.page.pay';
    	$charset='utf-8';
@@ -59,7 +60,27 @@ class TestController extends Controller
          $str .=$k . '=' . $v .'&';
 
         }
-        echo 'str:' .$str;die;
+        //echo 'str:' .$str;die;
+        $str = rtrim($str,'&');
+        //echo 'str: '.$str;echo '</br>';echo '<hr>';
+        // 3 计算签名   https://docs.open.alipay.com/291/106118
+        $key = storage_path('keys/app_priv');
+        $priKey = file_get_contents($key);
+        $res = openssl_get_privatekey($priKey);
+        //var_dump($res);echo '</br>';
+        openssl_sign($str, $sign, $res, OPENSSL_ALGO_SHA256);       //计算签名
+        $sign = base64_encode($sign);
+        $param['sign'] = $sign;
+        // 4 urlencode
+        $param_str = '?';
+        foreach($param as $k=>$v){
+            $param_str .= $k.'='.urlencode($v) . '&';
+        }
+        $param_str = rtrim($param_str,'&');
+        $url = $ali_gateway . $param_str;
+        //发送GET请求
+        //echo $url;die;
+        header("Location:".$url);
 
 
 
