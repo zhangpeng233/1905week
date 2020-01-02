@@ -16,9 +16,9 @@ class TestController extends Controller
    	$sign='';
    	$timestamp=date('Y-m-d H:i:s');
    	$version ='1.0';
-      $return_url='http://1905zhangpeng.comcto.com/alipay/notify';
+   	$return_url='http://1905zhangpeng.comcto.com/alipay/notify';
    	$notify_url='http://1905zhangpeng.comcto.com/alipay/notify';   //支付宝异步通知地址
-   	$biz_content='';
+
 
    	
 
