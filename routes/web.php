@@ -16,3 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/test/pay','TestController@alipay');
+
+
+
+//接口
+//Route::get('/api/test','Api\TextController');
