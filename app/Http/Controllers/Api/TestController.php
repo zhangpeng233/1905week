@@ -28,7 +28,6 @@ class TestController extends Controller
             'email'         => $request->input('email'),
             'name'          => $request->input('name'),
             'password'      => $password,
-            'mobile'        => $request->input('mobile'),
             'last_login'    => time(),
             'last_ip'       => $_SERVER['REMOTE_ADDR'],     //获取远程IP
         ];
