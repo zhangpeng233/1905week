@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Model\UserModel;
 class TestController extends Controller
 {
     public function test()
@@ -16,7 +16,8 @@ class TestController extends Controller
      */
     public function reg(Request $request)
     {
-        echo '<pre>';print_r($request->input());echo '</pre>';die;
+
+        //echo '<pre>';print_r($request->input());echo '</pre>';die;
         //验证用户名 验证email 验证手机号
         $pass1 = $request->input('pass1');
         $pass2 = $request->input('pass2');
@@ -28,6 +29,7 @@ class TestController extends Controller
             'email'         => $request->input('email'),
             'name'          => $request->input('name'),
             'password'      => $password,
+            'mobile'        =>$request->input('mobile'),
             'last_login'    => time(),
             'last_ip'       => $_SERVER['REMOTE_ADDR'],     //获取远程IP
         ];
