@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/test/pay','TestController@alipay');        //去支付
 //Route::get('/test/alipay/return','Alipay\PayController@aliReturn');
 //Route::post('/test/alipay/notify','Alipay\PayController@notify');
-Route::get('/test/ascli','TestController@ascii');
+Route::get('/test/ascli','TestController@ascli');
 Route::get('/test/dec','TestController@dec');
 // 接口
 Route::get('/api/test','Api\TestController@test');
