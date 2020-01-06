@@ -17,7 +17,7 @@ class TestController extends Controller
     public function reg(Request $request)
     {
 
-        //echo '<pre>';print_r($request->input());echo '</pre>';die;
+        echo '<pre>';print_r($request->input());echo '</pre>';
         //验证用户名 验证email 验证手机号
         $pass1 = $request->input('pass1');
         $pass2 = $request->input('pass2');
@@ -44,7 +44,7 @@ class TestController extends Controller
     public function login(Request $request)
     {
         $name = $request->input('name');
-        $pass = $request->input('pass');
+        $pass= $request->input('pass');
         $u = UserModel::where(['name'=>$name])->first();
         if($u){
             //验证密码
@@ -73,6 +73,7 @@ class TestController extends Controller
             ];
         }
         return $response;
+
     }
     /**
      * 获取用户列表
@@ -80,7 +81,9 @@ class TestController extends Controller
      */
     public function userList()
     {
-        $list =UserModel::all();
+
+        $list = UserModel::all();
+        echo '<pre>';print_r($list->toArray());echo '</pre>';
 
 
     }

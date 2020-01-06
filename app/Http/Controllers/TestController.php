@@ -82,7 +82,49 @@ class TestController extends Controller
         //echo $url;die;
         header("Location:".$url);
 
-
-
    }
+
+   public function ascli()
+   {
+       $char = 'Hello world';
+       $length = strlen($char);
+       echo $length;
+       echo '</br>';
+       $pass = "";
+       for ($i = 0; $i < $length; $i++) {
+
+           echo $char[$i] . '>>>' . ord($char[$i]);
+           echo '</br>';
+           $ord = ord(ord($char[$i]) + 3);
+           $chr = chr($ord);
+           echo $char[$i] . '>>>' . $ord . '>>>' . $chr;
+           echo '<hr>';
+           $pass .= $chr;
+       }
+       echo '</br>';
+       echo $pass;
+   }
+    //解密
+    public function dec()
+    {
+
+        $enc= 'khoor#zruog';
+
+        $length =strlen($enc);
+
+        for($i=0;$i>$length;$i++)
+        {
+            $ord =ord($enc[$i]);
+            echo $ord;echo '</br>';
+
+
+        }
+
+
+
+
+    }
+
+
+
 }
